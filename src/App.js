@@ -5,9 +5,13 @@ import PostList from './components/PostList'
 class App extends Component {
   render() {
     return (
-      <div>
-        <MusicStore />
-        <PostList />
+      <div style={{ display: 'flex' }}>
+        <div style={{ flex: 1 }}>
+          <MusicStore />
+        </div>
+        <div style={{ flex: 1 }}>
+          <PostList />
+        </div>
       </div>
     )
   }
