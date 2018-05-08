@@ -1,34 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
+import withData from './withData'
 
-class PostList extends Component {
-  state = {
-    posts: [],
-    loading: false,
-    error: null,
-  }
+const PostList = ({ list }) => (
+  <div>
+    <h1>Post List</h1>
+    { list.length > 0 && list.map(({ id, title }) => <li key={id}>{title}</li>) }
+  </div>
+)
 
-  componentDidMount() {
-    this.setState({ loading: true }, () => {
-      fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(response => response.json())
-        .then(posts => this.setState({ posts, loading: false, error: null }))
-        .catch(error => this.setState({ posts: [], loading: false, error: error.message }))
-    })
-  }
-
-  render() {
-    const { loading, error, posts } = this.state
-
-    if (loading) return <p>Loading...</p>
-    else if (error) return <p>Whoops! Something wrong...</p>
-
-    return (
-      <div>
-        <h1>Post List</h1>
-        { posts.length > 0 && posts.map(({ id, title }) => <li key={id}>{title}</li>) }
-      </div>
-    )
-  }
-}
-
-export default PostList
+export default withData({
+  url: 'https://jsonplaceholder.typicode.com/posts',
+})(PostList)
