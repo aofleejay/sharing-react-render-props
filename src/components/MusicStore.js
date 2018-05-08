@@ -1,13 +1,16 @@
-import React, { Component } from 'react'
-import withData from './withData'
+import React from 'react'
+import DataConnector from './DataConnector'
 
-const MusicStore = ({ list }) => (
-  <div>
-    <h1>Music Store</h1>
-    { list.length > 0 && list.map(({ id, title }) => <li key={id}>{title}</li>) }
-  </div>
+const MusicStore = () => (
+  <DataConnector
+    url="https://jsonplaceholder.typicode.com/albums"
+    render={(list) => (
+      <div>
+        <h1>Music Store</h1>
+        { list.length > 0 && list.map(({ id, title }) => <li key={id}>{title}</li>) }
+      </div>
+    )}
+  />
 )
 
-export default withData({
-  url: 'https://jsonplaceholder.typicode.com/albums',
-})(MusicStore)
+export default MusicStore
