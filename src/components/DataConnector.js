@@ -22,7 +22,7 @@ class DataConnector extends Component {
     if (loading) return <p>Loading...</p>
     else if (error) return <p>Whoops! Something wrong...</p>
 
-    return this.props.render(this.state.list)
+    return this.props.render(list)
   }
 }
 
