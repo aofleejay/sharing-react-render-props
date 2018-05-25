@@ -4,10 +4,10 @@ import DataConnector from './DataConnector'
 const PostList = () => (
   <DataConnector
     url="https://jsonplaceholder.typicode.com/posts"
-    render={(list) => (
+    render={(posts) => (
       <div>
         <h1>Post List</h1>
-        { list.length > 0 && list.map(({ id, title }) => <li key={id}>{title}</li>) }
+        { posts.length > 0 && posts.map(({ id, title }) => <li key={id}>{title}</li>) }
       </div>
     )}
   />
