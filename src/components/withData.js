@@ -24,7 +24,7 @@ const withData = ({ url }) => (ComposedComponent) => {
       else if (error) return <p>Whoops! Something wrong...</p>
   
       return (
-        <ComposedComponent {...this.props} list={this.state.list}  />
+        <ComposedComponent {...this.props} list={list}  />
       )
     }
   }
